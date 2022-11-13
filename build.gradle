@@ -1,0 +1,52 @@
+buildscript {
+    ext {
+        serenityCoreVersion = "3.2.5"
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:$serenityCoreVersion")
+    }
+}
+
+plugins {
+    id 'java'
+}
+apply plugin: 'net.serenity-bdd.aggregator'
+
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+ext {
+    serenityCoreVersion = "3.2.5"
+    serenityCucumberVersion = "3.2.5"
+}
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    implementation "net.serenity-bdd:serenity-core:${serenityCoreVersion}"
+    implementation "net.serenity-bdd:serenity-junit:${serenityCoreVersion}"
+    implementation "net.serenity-bdd:serenity-cucumber:${serenityCucumberVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay:${serenityCoreVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityCoreVersion}"
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.assertj:assertj-core:3.22.0'
+    testImplementation 'org.slf4j:slf4j-simple:1.7.36'
+    implementation group: 'net.serenity-bdd', name: 'serenity-screenplay-rest', version: '3.2.5'
+
+}
+test {
+    systemProperty "cucumber.options", System.getProperty("cucumber.options")
+}
+
+
+gradle.startParameter.continueOnFailure = true
