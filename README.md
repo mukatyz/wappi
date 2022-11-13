@@ -17,8 +17,16 @@ This project contains a structure ready to implement automated test cases using 
 In this case were created functional test cases for the main components
 
 - Login
+  Feature: src\test\resources\features\wappi\login.feature
+  Runner: src\java\wappi\runners\Login.class
 - Orders
+  Feature: src\test\resources\features\wappi\orders.feature
+  Runner: src\java\wappi\runners\Orders.class
 - Coupon
+  Feature: src\test\resources\features\wappi\Coupon.feature
+  Runner: src\java\wappi\runners\coupon.class
 - Profile information
+  Feature: src\test\resources\features\wappi\profile.feature
+  Runner: src\java\wappi\runners\Profile.class
 
 
